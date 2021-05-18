@@ -3,28 +3,35 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package shapes;
 
 /**
  *
  * @author saer1
  */
-public class Sphere {
-
+public class Cone {
+ 
     private double radius;
+    private double height;
     private double surface; 
-    private double volume;
+    private double volume; 
     
-   //constructors
-    public Sphere() {
+    //constructors
+    public Cone () {
         this.setRadius(1);
+        this.setHeight(1);
     }
     
-    public Sphere (double radius) {
-        this.setRadius(radius);
+    public Cone (double side) {
+        this.setRadius(side);
+        this.setHeight(side);
     }
-   
+    
+    public Cone (double radius, double height) {
+        this.setRadius(radius);
+        this.setHeight(height);
+    }
+    
     public double getRadius() {
         return radius;
     }
@@ -35,12 +42,23 @@ public class Sphere {
         this.setVolume();
     }
 
+    public double getHeight() {
+        return height;
+    }
+    
+    public void setHeight(double height) {
+        this.height = height;
+        this.setSurface();
+        this.setVolume();
+    }
+
     private void setSurface() { 
-        this.surface = Math.pow(this.radius,2) * Math.PI * 4;
+        this.surface = Math.PI * this.radius * (this.radius + (Math.sqrt(Math.pow(this.height, 2) 
+        + Math.pow(this.radius,2))));     
     }
 
     private void setVolume() {
-        this.volume = (4.0 / 3.0) * Math.PI * Math.pow(this.radius,3);
+        this.volume = (Math.PI * Math.pow(this.radius, 2) * this.height / 3); 
     }
 
     public double getSurface() {
@@ -49,5 +67,6 @@ public class Sphere {
     public double getVolume() {
         return volume; 
     }
-
+       
 }
+   

@@ -45,7 +45,7 @@ public class Triangle {
         return apple;
     }
 
-    public void setApple(int Apple) {
+    public void setApple(int apple) {
         this.apple = apple;
         this.setPerimeter();
     }
